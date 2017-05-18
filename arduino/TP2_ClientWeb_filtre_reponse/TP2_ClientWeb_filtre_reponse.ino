@@ -1,9 +1,9 @@
 #include <ESP8266WiFi.h>
 
-const char* ssid     = "PrDIALLO"; // ssid du reseau wifi
-const char* password = "PrDIALLO";     // le mot de passe du wifi
+const char* ssid     = "Orange_81139C"; // ssid du reseau wifi
+const char* password = "83846847";     // le mot de passe du wifi
 
-const char* host = "10.2.5.156"; //adresse ip du serveur web
+const char* host = "192.168.1.101"; //adresse ip du serveur web
 
 
 void setup() {
@@ -36,7 +36,7 @@ void loop() {
   
   // Use WiFiClient class to create TCP connections
   WiFiClient client;
-  const int httpPort = 8888;  //le port 80 par defaut
+  const int httpPort = 80;//888;  //le port 80 par defaut
   if (!client.connect(host, httpPort)) {
     Serial.println("connection failed");
     return;
@@ -51,10 +51,12 @@ void loop() {
     client.print("\r\n");
     client.print("Connection: close\r\n\r\n");
     client.println();
-   
+   int nbligne=0;
     while(client.available()){
       String line = client.readStringUntil('\r');
-      Serial.print(line);
+      if(nbligne==8)
+        Serial.print(line);
+      nbligne++;
     }
     client.stop();
     Serial.println();
