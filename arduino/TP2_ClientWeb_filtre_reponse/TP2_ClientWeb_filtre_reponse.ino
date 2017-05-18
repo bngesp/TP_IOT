@@ -45,7 +45,7 @@ void loop() {
     
     
     // This will send the request to the server
-    client.print("GET /TP2/hello.php HTTP/1.1\r\n");
+    client.print("GET /TP2/traitement.php HTTP/1.1\r\n");
     client.print("Host: ");
     client.print(host);
     client.print("\r\n");
